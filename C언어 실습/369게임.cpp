@@ -11,11 +11,11 @@ int main(){
 		int count = 0;
 		int iNum = i;
 		while(iNum > 0){
-			int numberSplit = iNum % 10; // 현재 숫자의 일의 자리 수
+			int numberSplit = iNum % 10; 
             if (numberSplit == 3 || numberSplit == 6 || numberSplit == 9) {
-               	count++; // 박수 개수 증가
+               	count++; 
           	}
-           	iNum /= 10; // 다음 자리로 이동
+           	iNum /= 10; 
 		}
 		if(count != 0){
 			for(int j = 0; j < count;j++){
