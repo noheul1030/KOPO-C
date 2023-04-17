@@ -57,7 +57,7 @@ public class RunExchangeClass {
 		returnRealEUR = (int)returnEUR;	
 		
 		if(checkBalanceEUR(returnRealEUR)) {
-			System.out.println(returnRealEUR + " 유로");
+			System.out.println(returnRealEUR + " 유로\n");
 			System.out.println("500 유로 지폐 " 
 								+ (returnRealEUR / 500) + " 장 ");
 			System.out.println("100 유로 지폐 " 
@@ -90,7 +90,7 @@ public class RunExchangeClass {
 		int charge;
 		returnJPY = moneyKOR / ConstValueClass.EX_JPY;
 		returnRealJPY = (int)returnJPY;		
-		System.out.println(returnRealJPY + " 엔 ");
+		System.out.println(returnRealJPY + " 엔\n");
 		System.out.println("10000 엔 지폐 " 
 							+ (returnRealJPY / 10000) + " 장 ");
 		System.out.println("5000 엔 지폐 " 
