@@ -1,0 +1,32 @@
+
+public class OrderListClass {
+	private int ticketGrade;
+	private int totalPrice;
+	private int ticketType;
+	private int ticketCount;
+	
+	public OrderListClass(int ticketGrade, 
+			int totalPrice, int ticketType, 
+			int ticketCount) {
+		this.ticketGrade = ticketGrade;
+		this.totalPrice = totalPrice;
+		this.ticketType = ticketType;
+		this.ticketCount = ticketCount;
+	}
+	
+	public int getTicketGrade() {
+		return this.ticketGrade;
+	}
+	
+	public int getTotalPrice() {
+		return this.totalPrice;
+	}
+	
+	public int getTicketType() {
+		return this.ticketType;
+	}
+	
+	public int getTicketCount() {
+		return this.ticketCount;
+	}
+}
