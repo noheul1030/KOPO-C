@@ -1,0 +1,61 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() 
+{
+	const int MATRIX_SIZE = 10;
+	int matrix[100][100] = { 0 };
+	int baseY, baseX;
+	int start = 0, end = 0;
+	int count = 1;
+	start = 0;
+	end = MATRIX_SIZE - 1;
+	baseY = 0;
+	baseX = MATRIX_SIZE - 1;
+	while (1) {		
+		// --> 
+		//for (int index = 0; index <= 4; index++) {
+		for (int index = start; index <= end; index++) {
+			matrix[baseY][index] = count++;
+			if (count > (MATRIX_SIZE * MATRIX_SIZE)) break;
+		}
+		if (count > (MATRIX_SIZE * MATRIX_SIZE)) break;
+		start++;
+		// |
+		// V
+		//for (int index = 1; index <= 4; index++) {
+		for (int index = start; index <= end; index++) {
+			matrix[index][baseX] = count++;
+		}
+		int temp = start;
+		start = end - 1;
+		end = temp - 1;
+		// <--
+		// for (int index = 3; index >= 0; index--) {
+		for (int index = start; index >= end; index--) {
+			matrix[baseX][index] = count++;
+		}
+		end++;
+		// ^
+		// |
+		// for (int index = 3; index >= 1; index--) {
+		for (int index = start; index >= end; index--) {
+			matrix[index][baseY] = count++;
+		}
+		temp = start;
+		start = end;
+		end = temp;
+		baseY++;
+		baseX--;
+	}
+	
+	// Ãâ·Â
+	for (int row = 0; row < MATRIX_SIZE; row++) {
+		for (int col = 0; col < MATRIX_SIZE; col++) {
+			printf("%5d", matrix[row][col]);
+		}
+		printf("\n");
+	}
+	
+	return 0;
+}
