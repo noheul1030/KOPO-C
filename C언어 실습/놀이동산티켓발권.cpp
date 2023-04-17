@@ -70,7 +70,7 @@ int buyTicket_Choice() {
 }
 
 // 4. 우대사항을 입력 받는 함수
-//int preferentialTreatment_Choice();
+
 int preferentialTreatmentChoice() {
     int preferentialTreatment;
     printf("우대사항을 선택해 주세요.\n"
@@ -126,7 +126,7 @@ double preferentialTreatment_Sale(int preferentialTreatment_Choice) {
 }
 
 // 6. 선택한 티켓과 나이를 계산하여 금액을 산출하는 함수
-int tiketPrice(int tiket_Choice, int age) {
+int tiketPrice(int age, int tiket_Choice) {
 
 	int tiketPrice = 0;
 
@@ -170,7 +170,7 @@ int total(int tiketPrice, int buyTiket_Choice) {
 // 8. Test 6 -> 7 -> 5 순으로 계산 실행 함수
 void test() {
 	
-    int tiket_Price = tiketPrice(tiket_Choice(), age());
+    int tiket_Price = tiketPrice(age(),tiket_Choice());
 	
     int total2 = total(tiket_Price, buyTicket_Choice());
 	
@@ -182,7 +182,7 @@ void test() {
 
 // 9. 티켓 발권의 지속 / 종료 여부 확인 함수
 void test2() {
-//	struct Tiket_Choice_Next LotteWorld;
+
     while(1) {
         test();
         printf("\n계속 발권 하시겠습니까? \n"
@@ -202,9 +202,7 @@ void test2() {
 
 // main() 함수
 int main() {
-    // Tiket_Choice_Next 인스턴스 생성
-//    struct Tiket_Choice_Next LotteWorld;
-    // test2() 함수 호출
+ 
     test2();
     return 0;
 }
