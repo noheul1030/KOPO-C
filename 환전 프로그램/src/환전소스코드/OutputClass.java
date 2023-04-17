@@ -4,120 +4,107 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OutputClass {
-	InputClass input = new InputClass();
-	Cal cal = new Cal();
-	
-	int type = input.inputFromConsoleType();
-	private List<Integer> calList = new ArrayList<Integer>();
-	private List<String> calCall = new ArrayList<String>();
-	
-	
-	// 3. ¿ÜÈ­ ÀÜµ· °¹¼ö °è»ê ¸Þ¼­µå
-	public void outputResult(int returnReal) {
-		List<Integer> outputResult = new ArrayList<Integer>();
-		
-		int returnUSD = 0;
-		
-		switch(type) {
-		case 1: 
-			calList.addAll(cal.USD_List);
-			calCall.addAll(cal.USD_Call);
-			break;
-		case 2: 
-			calList.addAll(cal.EUR_List);
-			calCall.addAll(cal.EUR_Call);
-			break;
-		case 3: 
-			calList.addAll(cal.JPY_List);
-			calCall.addAll(cal.JPY_Call);
-			break;
-		}
-		
-		for (int i = 0; i < calList.size(); i++) {
-			if (i == 0) {
-				outputResult.add(returnReal / calList.get(i));
-				returnUSD = returnReal % calList.get(i);
-			} else {
-				if (calList.get(calList.size()) == 1) {
-					outputResult.add(returnUSD % calList.get(i));
-				} else {
-					outputResult.add(returnUSD / calList.get(i));
-					returnUSD = returnReal % calList.get(i);
-				}
-			}
-		}
-		printResult(returnReal,outputResult);
-	}
+    private InputClass input = new InputClass();
+    private Cal cal = new Cal();
 
-	// 4. ¿øÈ­ ÀÜµ· °¹¼ö °è»ê ¸Þ¼­µå
-	public void outputResultWon(int charge) {
-		List<Integer> won = new ArrayList<Integer>();
-		
-		int returnWON = 0;
+    private int type = input.inputFromConsoleType();
+    private List<Integer> calList = new ArrayList<Integer>();
+    private List<String> calCall = new ArrayList<String>();
 
-		for (int i = 0; i < cal.Won_List.size(); i++) {
-			if (i == 0) {
-				won.add(charge / cal.Won_List.get(i));
-				returnWON = charge % cal.Won_List.get(i);
-			} else {
-				won.add(returnWON / cal.Won_List.get(i));
-				returnWON = charge % cal.Won_List.get(i);
-			}
-		}
-		printResultWon(charge, won);
-	}
+    // 3. ±³È¯ÇÒ ¿ÜÈ­ È­Æó´ÜÀ§ ¸®½ºÆ® È£Ãâ
+    public void list() {
+        switch (type) {
+        case 1:
+            calList.addAll(cal.USD_List);
+            calCall.addAll(cal.USD_Call);
+            break;
+        case 2:
+            calList.addAll(cal.EUR_List);
+            calCall.addAll(cal.EUR_Call);
+            break;
+        case 3:
+            calList.addAll(cal.JPY_List);
+            calCall.addAll(cal.JPY_Call);
+            break;
+        }
+    }
 
-	// 3. ¿ÜÈ­ ÀÜµ· °¹¼ö ÇÁ¸°Æ® ¸Þ¼­µå 
-	private void printResult(int returnRealUSD,List<Integer> outputResult) {
-		switch (type) {
-		case 1:
-			System.out.println(returnRealUSD + " doller\n");
-			for (int i = 0; i < outputResult.size(); i++) {
-				System.out.printf("%d ´Þ·¯ %d %s\n", calList.get(i), outputResult.get(i), calCall.get(i));
-			}
-			System.out.println();
-			break;
-		case 2:
-			System.out.println(returnRealUSD + " À¯·Î\n");
-			for (int i = 0; i < outputResult.size(); i++) {
-				System.out.printf("%d À¯·Î %d %s\n", calList.get(i), outputResult.get(i), calCall.get(i));
-			}
-			System.out.println();
-			break;
-		case 3:
-			System.out.println(returnRealUSD + " ¿£\n");
-			for (int i = 0; i < outputResult.size(); i++) {
-				System.out.printf("%d ¿£ %d %s\n", calList.get(i), outputResult.get(i), calCall.get(i));
-			}
-			System.out.println();
-			break;
-		
-		}
-	}
+    // 4. ¿ÜÈ­ ÀÜµ· °¹¼ö °è»ê ¸Þ¼­µå
+    public void outputResult(int returnReal) {
+        List<Integer> outputResult = new ArrayList<Integer>();
 
-	private void printResultWon(int charge, List<Integer> won) {
+        int returnUSD = 0;
 
-		System.out.println("\nÀÜµ· = " + charge + " ¿ø\n");
-		for (int i = 0; i < won.size(); i++) {
-			System.out.printf("%d ¿ø %d %s\n", cal.Won_List.get(i), won.get(i), cal.Won_Call.get(i));
-		}
-		System.out.println();
-	}
+        for (int i = 0; i < calList.size(); i++) {
+            if (i == 0) {
+                outputResult.add(returnReal / calList.get(i));
+                returnUSD = returnReal % calList.get(i);
+            } else {
+                if (calList.get(i) == 1) {
+                    outputResult.add(returnUSD % calList.get(i - 1));
+                } else {
+                    outputResult.add(returnUSD / calList.get(i));
+                    returnUSD = returnReal % calList.get(i);
+                }
+            }
+        }
+        printResult(returnReal, outputResult);
+    }
 
-	public void printErrorMessage(int errorCode) {
-		switch (errorCode) {
-		case ConstValueClass.ERR_BALANCE_USD:
-			System.out.print("´Þ·¯ ");
-			break;
-		case ConstValueClass.ERR_BALANCE_EUR:
-			System.out.print("À¯·Î ");
-			break;
-		case ConstValueClass.ERR_BALANCE_JPY:
-			System.out.print("¾ØÈ­ ");
-			break;
-		}
-		System.out.println("º¸À¯ ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
-	}
+    // 5. ¿øÈ­ ÀÜµ· °¹¼ö °è»ê ¸Þ¼­µå
+    public void outputResultWon(int charge) {
+        List<Integer> won = new ArrayList<Integer>();
 
-	
+        int returnWON = 0;
+
+        for (int i = 0; i < cal.Won_List.size(); i++) {
+            if (i == 0) {
+                won.add(charge / cal.Won_List.get(i));
+                returnWON = charge % cal.Won_List.get(i);
+            } else {
+                won.add(returnWON / cal.Won_List.get(i));
+                returnWON = charge % cal.Won_List.get(i);
+            }
+        }
+        printResultWon(charge, won);
+    }
+
+    // 6. ¿ÜÈ­ ÀÜµ· °¹¼ö ÇÁ¸°Æ® ¸Þ¼­µå
+    private void printResult(int returnRealUSD, List<Integer> outputResult) {
+        System.out.printf("%d %s\n", returnRealUSD, cal.changeMoney_type.get(type));
+
+        for (int i = 0; i < outputResult.size(); i++) {
+            System.out.printf("%d %s %d %s\n", calList.get(i), cal.changeMoney_type.get(type), outputResult.get(i),
+                    calCall.get(i));
+        }
+        System.out.println();
+
+    }
+
+    // 7. ¿øÈ­ ÀÜµ· °¹¼ö ÇÁ¸°Æ® ¸Þ¼­µå
+    private void printResultWon(int charge, List<Integer> won) {
+        System.out.println("\nÀÜµ· = " + charge + " ¿ø\n");
+
+        for (int i = 0; i < won.size(); i++) {
+            System.out.printf("%d ¿ø %d %s\n", cal.Won_List.get(i), won.get(i), cal.Won_Call.get(i));
+        }
+        System.out.println();
+    }
+
+    //
+    public void printErrorMessage(int errorCode) {
+        switch (errorCode) {
+        case ConstValueClass.ERR_BALANCE_USD:
+            System.out.print("´Þ·¯ ");
+            break;
+        case ConstValueClass.ERR_BALANCE_EUR:
+            System.out.print("À¯·Î ");
+            break;
+        case ConstValueClass.ERR_BALANCE_JPY:
+            System.out.print("¿£È­ ");
+            break;
+        }
+        System.out.println("º¸À¯ ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.");
+    }
+
 }
