@@ -1,4 +1,4 @@
-package LOTTEWORLD;
+package lotteworld;
 
 public class PrintList {
 
