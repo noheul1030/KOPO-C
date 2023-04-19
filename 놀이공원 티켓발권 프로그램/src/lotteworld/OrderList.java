@@ -1,45 +1,60 @@
 package lotteworld;
 
-import java.util.List;
-
 public class OrderList {
-    public String id, optionString;
-    public int age, option, amount, cost;
+	
+	private String ticketType;
+	private String group;
+	private int ticketCount;
+	private int totalPrice;
+	private String preferentialTreatment;
+	
 
-    // public List<OrderList> data = new ArrayList<OrderList>();
-    //
-    //
-    //
-    // OrderList order = new OrderList();
-    // order.id = idNumber;
-    // order.age = age;
-    // order.option = preferOption;
-    // order.amount = amount;
-    // order.cost = cost;
-    // data.add(order);
+	public OrderList(String ticketType, String group, int ticketCount, int totalPrice, String preferentialTreatment) {
+		this.ticketType = ticketType;
+		this.group = group;
+		this.ticketCount = ticketCount;
+		this.totalPrice = totalPrice;
+		this.preferentialTreatment = preferentialTreatment;
+	}
 
-    // for(OrderList order : ls.data) {
-    //
-    // }
+	public String getTicketType() {
+		return ticketType;
+	}
 
-    public void printReport(List<TicketDTO> ticketList) {
+	public void setTicketType(String ticketType) {
+		this.ticketType = ticketType;
+	}
 
-        // 티켓목록 제목출력
+	public String getGroup() {
+		return group;
+	}
 
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("날짜").append(',');
-        buffer.append("권종").append(',');
-        // 일부생략 했음. 구현 필요
-        buffer.append("우대사항");
+	public void setGroup(String group) {
+		this.group = group;
+	}
 
-        // 티켓목록 데이타 반복출력
-        for (TicketDTO dto : ticketList) {
-            buffer = new StringBuffer();
-            buffer.append(dto.getResidentRegistrationNumber()).append(',');
-            buffer.append(dto.getTicketChoice()).append(',');
-            // 일부생략 했음. 구현 필요
-            buffer.append(dto.getPreferentialTreatment());
-            System.out.println(buffer.toString());
-        }
-    }
+	public int getTicketCount() {
+		return ticketCount;
+	}
+
+	public void setTicketCount(int ticketCount) {
+		this.ticketCount = ticketCount;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getPreferentialTreatment() {
+		return preferentialTreatment;
+	}
+
+	public void setPreferentialTreatment(String preferentialTreatment) {
+		this.preferentialTreatment = preferentialTreatment;
+	}
+
 }
