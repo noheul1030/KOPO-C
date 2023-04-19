@@ -2,11 +2,9 @@ package lotteworld;
 
 public class Main {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		TestClass LotteWorld = new TestClass();
-		LotteWorld.totalTest2();
-		
-	}
-
+        RunClass LotteWorld = new RunClass();
+        LotteWorld.startRunSecond();
+    }
 }
