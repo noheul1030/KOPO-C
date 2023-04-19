@@ -6,6 +6,7 @@ public class Main {
 
 		TestClass LotteWorld = new TestClass();
 		LotteWorld.totalTest2();
+		
 	}
 
 }
