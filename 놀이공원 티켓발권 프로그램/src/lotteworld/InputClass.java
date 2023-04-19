@@ -48,7 +48,7 @@ public class InputClass extends PrintClass {
             buyTicketChoicePint();
             buyTicketChoice = scanner.nextInt();
 
-            if (TicketConstant.BUY_MIN_COUNT <= buyTicketChoice && buyTicketChoice <= TicketConstant.BUY_MAX_COUNT) {
+            if (TicketDTO.BUY_MIN_COUNT <= buyTicketChoice && buyTicketChoice <= TicketDTO.BUY_MAX_COUNT) {
                 break;
             }
             errorPrint();
@@ -95,3 +95,10 @@ public class InputClass extends PrintClass {
         return reTry;
     }
 }
+////// 예외발생 //////
+// 1. 주민등록번호 입력 부분 문자가 들어오면 오류
+// 2. int 입력 부분에 String이 들어오면 오류
+// 3. 남성이 우대사항 임산부5번 선택하면 오류
+
+
+
