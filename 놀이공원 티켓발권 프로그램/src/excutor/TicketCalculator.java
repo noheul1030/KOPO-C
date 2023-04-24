@@ -1,9 +1,9 @@
-package Excutor;
+package excutor;
 
-import DTO.TicketDTO;
-import DTO.TicketPriceEnum;
-import InputUtil.AgeCheck;
-import InputUtil.TicketConstants;
+import dto.TicketDTO;
+import dto.TicketPriceEnum;
+import inputUtil.AgeCheck;
+import inputUtil.TicketConstants;
 
 public class TicketCalculator {
 

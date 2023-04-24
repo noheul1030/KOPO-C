@@ -1,14 +1,14 @@
-package Output;
+package output;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import DTO.OrderListDTO;
-import DTO.TicketDTO;
-import DTO.TicketPriceEnum;
-import Excutor.TicketCalculator;
-import InputUtil.AgeCheck;
-import InputUtil.TicketConstants;
+import dto.OrderListDTO;
+import dto.TicketDTO;
+import dto.TicketPriceEnum;
+import excutor.TicketCalculator;
+import inputUtil.AgeCheck;
+import inputUtil.TicketConstants;
 
 public class PrintList {
 

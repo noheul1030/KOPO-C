@@ -1,8 +1,8 @@
 package language;
 
-import DTO.OrderListDTO;
-import DTO.TicketDTO;
-import InputUtil.TicketConstants;
+import dto.OrderListDTO;
+import dto.TicketDTO;
+import inputUtil.TicketConstants;
 
 public class KoreanLanguage {
 	// ÇÑ±¹¾î

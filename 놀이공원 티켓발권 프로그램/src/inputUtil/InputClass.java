@@ -1,8 +1,8 @@
-package InputUtil;
+package inputUtil;
 
 import java.util.Scanner;
 
-import Output.PrintClass;
+import output.PrintClass;
 
 public class InputClass {
 

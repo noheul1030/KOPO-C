@@ -1,7 +1,7 @@
 package language;
 
-import DTO.TicketDTO;
-import InputUtil.TicketConstants;
+import dto.TicketDTO;
+import inputUtil.TicketConstants;
 
 public class EnglishLanguage {
 	

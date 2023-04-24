@@ -1,6 +1,6 @@
-package DTO;
+package dto;
 
-import InputUtil.InputClass;
+import inputUtil.InputClass;
 
 public class TicketDTO {
 	private InputClass input = new InputClass();

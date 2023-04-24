@@ -1,4 +1,4 @@
-package InputUtil;
+package inputUtil;
 
 public class InputErrorCheck {
 

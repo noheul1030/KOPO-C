@@ -1,4 +1,4 @@
-package InputUtil;
+package inputUtil;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;

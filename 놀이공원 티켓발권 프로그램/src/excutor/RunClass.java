@@ -1,9 +1,9 @@
-package Excutor;
+package excutor;
 
-import DTO.TicketDTO;
-import InputUtil.TicketConstants;
-import Output.PrintClass;
-import Output.PrintList;
+import dto.TicketDTO;
+import inputUtil.TicketConstants;
+import output.PrintClass;
+import output.PrintList;
 
 public class RunClass {
 

@@ -1,6 +1,6 @@
 package lotteworld;
 
-import Excutor.RunClass;
+import excutor.RunClass;
 
 public class Main {
 
