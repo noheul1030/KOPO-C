@@ -1,6 +1,11 @@
 package inputUtil;
 
 public class InputErrorCheck {
+	
+	// 0. 선택한 언어의 종류 확인
+	public static boolean languageChoiceCheck(String languageChoice) {
+		return languageChoice.equals(TicketConstants.KOREAN_COUNTRY_NUMBER) || languageChoice.equals(TicketConstants.ENGLISH_COUNTRY_NUMBER);
+	}
 
 	// 1. 티켓 종류 입력 체크
 	public static boolean ticketChoiceCheck(int value) {
