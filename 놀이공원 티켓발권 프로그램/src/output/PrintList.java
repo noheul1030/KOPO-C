@@ -1,7 +1,9 @@
 package output;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import dto.OrderListDTO;
 import dto.TicketDTO;
@@ -18,15 +20,20 @@ public class PrintList {
 
 	// 티켓 TYPE
 	public String ticketType(TicketDTO dto) {
-		return (dto.getTicketChoice() == TicketConstants.CHOICE_NUMBER_ONE) ? TicketConstants.DAY_TICKET
-				: TicketConstants.NIGHT_TICKET;
+		return (dto.getTicketChoice() == TicketConstants.CHOICE_NUMBER_ONE) ? LanguagePrintClass.getMsg("Ticket.AllDay")
+				: LanguagePrintClass.getMsg("Ticket.Night");
 	}
 
 	// 연령 GROUP
 	public String group(TicketDTO dto) {
 		int age = AgeCheck.ageCheck(dto.getResidentRegistrationNumber());
 		TicketPriceEnum ageGroup = cal.ageGroup(age);
-		return ageGroup.getPersonGroup();
+		if (Locale.getDefault() == (Locale.KOREAN)) {
+			return ageGroup.getPersonGroup_KR();
+		} else if (Locale.getDefault() == (Locale.US)) {
+			return ageGroup.getPersonGroup_US();
+		}
+		return null;
 	}
 
 	// 티켓 Count
@@ -41,7 +48,13 @@ public class PrintList {
 
 	// 우대할인
 	public String preferentialTreatment(TicketDTO dto) {
-		return "우대할인 " + TicketConstants.PREFERENTIAL_TREATMENT_PERSON[dto.getPreferentialTreatment() - 1];
+		if (Locale.getDefault() == (Locale.KOREAN)) {
+			return TicketConstants.PREFERENTIAL_TREATMENT_PERSON_KR[dto.getPreferentialTreatment() - 1];
+		} else if (Locale.getDefault() == (Locale.US)) {
+			return TicketConstants.PREFERENTIAL_TREATMENT_PERSON_EN[dto.getPreferentialTreatment() - 1];
+		}
+		return null;
+
 	}
 
 	// 1. OrderList 클래스 생성자에 dto 값 전달 메서드
@@ -51,24 +64,52 @@ public class PrintList {
 		data.add(orderList);
 	}
 
-	
+	// 글자 간격 맞추기 메서드
+	public void space(OrderListDTO order) {
+		if (order.getGroup().getBytes().length != TicketConstants.LANGUAGE_length) {
+			for (int i = 0; i < TicketConstants.LANGUAGE_length - order.getGroup().getBytes().length; i++) {
+				System.out.printf("%s", " ");
+			}
+		}
+	}
+
 	// 2. 누적된 발권정보 출력 메서드
 	public void OrderListPrint() {
 
 		for (OrderListDTO order : data) {
-
-			System.out.printf("%5s", order.getTicketType());
-			PrintClass.space(order);
-			System.out.printf("%10s", "X  " + order.getTicketCount());
-			System.out.printf("%12s원", TicketConstants.STRING_DECIMAL_FORMAT.format(order.getTotalPrice()));
-			System.out.printf("%4s%8s\n", " ", "* " + order.getPreferentialTreatment());
+			System.out.printf("%2s", " ");
+			System.out.printf("%s", order.getTicketType());
+			space(order);
+			System.out.printf("%4s", " ");
+			System.out.printf("%s", order.getGroup());
+			System.out.printf("%6s", " ");
+			System.out.printf("%s", "X  " + order.getTicketCount());
+			System.out.printf("%6s", " ");
+			System.out.printf("%s %s", TicketConstants.STRING_DECIMAL_FORMAT.format(order.getTotalPrice()),
+					LanguagePrintClass.getMsg("OrderSummaryPrint.won"));
+			System.out.printf("%3s", " ");
+			System.out.printf("%s %s\n", LanguagePrintClass.getMsg("Print.discount"),order.getPreferentialTreatment());
 		}
 	}
 
 	// 3. 최종 영수증 출력 메서드
 	public void ticketTotalPrint(TicketDTO dto) {
-		PrintClass.ticketTotalHeadPrint();
+		System.out.println(LanguagePrintClass.getMsg("Print.head"));
+		System.out.printf("%3s", " ");
+		System.out.printf("%s", LanguagePrintClass.getMsg("OrderSummaryPrint.type"));
+		System.out.printf("%8s", " ");
+		System.out.printf("%s", LanguagePrintClass.getMsg("OrderSummaryPrint.group"));
+		System.out.printf("%6s", " ");
+		System.out.printf("%s", LanguagePrintClass.getMsg("OrderSummaryPrint.count"));
+		System.out.printf("%8s", " ");
+		System.out.printf("%s", LanguagePrintClass.getMsg("OrderSummaryPrint.price"));
+		System.out.printf("%6s", " ");
+		System.out.printf("%s\n", LanguagePrintClass.getMsg("OrderSummaryPrint.preferentialTreatment"));
+
+		System.out.println(LanguagePrintClass.getMsg("Print.line"));
 		OrderListPrint();
-		PrintClass.ticketTotalTailPrint(dto);
+		System.out.println(LanguagePrintClass.getMsg("Print.line"));
+		System.out.println(MessageFormat.format(LanguagePrintClass.getMsg("OrderSummaryPrint.totalPrice"),
+				dto.getTotalSumPrice()));
 	}
 }
