@@ -32,14 +32,17 @@ public class TicketConstants {
 	public static final int CHOICE_NUMBER_ONE = 1;
 	public static final int CHOICE_NUMBER_TWO = 2;
 	
-	// TICKET TYPE
-	public static final String DAY_TICKET = "종일권";
-	public static final String NIGHT_TICKET = "야간권";
-
 	// Preferential treatment 
-	public static final String[] PREFERENTIAL_TREATMENT_PERSON = { "없음", "장애인", "국가유공자", "다자녀", "임산부" };
+	public static final String[] PREFERENTIAL_TREATMENT_PERSON_KR = { "없음", "장애인", "국가유공자", "다자녀", "임산부" };
+	public static final String[] PREFERENTIAL_TREATMENT_PERSON_EN = { "None", "Disabled Person", "Meritorious Persons", "a Multi-child Family", "Pregnant Woman" };
 	public static final double[] PREFERENTIAL_TREATMENT_DISCOUNT = { 1.0, 0.5, 0.5, 0.7, 0.5 };
-//	public static final 
+	
+	// Language Choice
+	public static final String KOREAN_COUNTRY_NUMBER = "1";
+	public static final String ENGLISH_COUNTRY_NUMBER = "2";
+	public static final String LANGUAGE_KOREAN = "ko";
+    public static final String LANGUAGE_ENGLISH = "en";
+    public static final int LANGUAGE_length = 7;
 	
 	public static LocalDate CURRENT_DATE = LocalDate.now();
 	public static DecimalFormat STRING_DECIMAL_FORMAT = new DecimalFormat("###,###,###,###");
