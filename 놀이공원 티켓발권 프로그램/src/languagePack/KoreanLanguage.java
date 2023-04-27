@@ -1,4 +1,4 @@
-package language;
+package languagePack;
 
 import dto.OrderListDTO;
 import dto.TicketDTO;

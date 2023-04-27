@@ -1,4 +1,4 @@
-package language;
+package languagePack;
 
 import dto.TicketDTO;
 import inputUtil.TicketConstants;
@@ -20,7 +20,7 @@ public class EnglishLanguage {
 	
 	public static void preferentialTreatmentChoicePrint() {
 		System.out.println("\nPlease Input the preferentialTreatment number choice. \n" + "1. None \n" + "2. disabled person \n"
-				+ "3. meritorious persons \n" + "4. a multi-child family \n" + "5. gravida");
+				+ "3. meritorious persons \n" + "4. a multi-child family \n" + "5. Pregnant Woman");
 	}
 	
 	public static void errorPrint() {
