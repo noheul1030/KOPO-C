@@ -2,7 +2,7 @@ package excutor;
 
 import dto.TicketDTO;
 import inputUtil.TicketConstants;
-import output.PrintClass;
+import output.LanguagePrintClass;
 import output.PrintList;
 
 public class RunClass {
@@ -21,8 +21,10 @@ public class RunClass {
 
         printlist.saveData(ticketDTO);
 
-        System.out.println("\n가격은 " + TicketConstants.STRING_DECIMAL_FORMAT.format(total) + " 원 입니다.");
-        System.out.println("감사합니다.");
+        System.out.printf("\n%s : %s %s\n",LanguagePrintClass.getMsg("OrderSummaryPrint.price")
+        		,TicketConstants.STRING_DECIMAL_FORMAT.format(total)
+        		,LanguagePrintClass.getMsg("OrderSummaryPrint.won"));
+        System.out.println(LanguagePrintClass.getMsg("Print.thanks"));
     }
 
     // 4. 티켓 발권의 지속 / 종료 여부 확인 메서드
@@ -39,14 +41,13 @@ public class RunClass {
             if (pick == TicketConstants.CHOICE_NUMBER_ONE) {
                 continue;
             } else if (pick ==  TicketConstants.CHOICE_NUMBER_TWO) {
-            	PrintClass. print.closePrint();
+            	
                 break;
             }
         }
         printlist.ticketTotalPrint(ticketDTO);
+        
+        System.out.println(LanguagePrintClass.getMsg("Print.close"));
     }
     
-    public void languagechange() {
-    	
-    }
 }
