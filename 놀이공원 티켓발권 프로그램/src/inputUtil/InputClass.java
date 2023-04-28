@@ -9,7 +9,7 @@ public class InputClass {
     private static Scanner scanner = new Scanner(System.in);
 
     // 0. 언어 선택 메서드
-    public void languageChoice() {
+    public static void languageChoice() {
         while (true) {
             System.out.println("언어를 선택해 주세요. \n" + "1. KOREAN \n" + "2. ENGLISH ");
             String languageChoice = scanner.next();
