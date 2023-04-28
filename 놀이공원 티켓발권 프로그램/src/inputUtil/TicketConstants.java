@@ -1,6 +1,7 @@
 package inputUtil;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
 public class TicketConstants {
@@ -45,5 +46,6 @@ public class TicketConstants {
     public static final int LANGUAGE_length = 7;
 	
 	public static LocalDate CURRENT_DATE = LocalDate.now();
+	public static SimpleDateFormat DATA_FORMAT = new SimpleDateFormat("yyyyMMdd");
 	public static DecimalFormat STRING_DECIMAL_FORMAT = new DecimalFormat("###,###,###,###");
 }
