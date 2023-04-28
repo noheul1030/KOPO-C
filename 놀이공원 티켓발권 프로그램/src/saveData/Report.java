@@ -1,29 +1,32 @@
 package saveData;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-
 public class Report {
 
 	public static void ReportHeadWriter() throws IOException {
-		FileWriter headWriter = new FileWriter("SaveFile/save.csv",StandardCharsets.UTF_8);
-		String headData = " 날짜,   권종,   연령구분,   수량,   가격,   우대사항";
+		BufferedWriter headWriter = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("SaveFile/save.csv", true), "UTF-8"));
+//		FileWriter headWriter = new FileWriter("SaveFile/save.csv",StandardCharsets.UTF_8);
+
+		String headData = "날짜,권종,연령구분,수량,가격,우대사항";
 		headWriter.write(headData);
 		headWriter.write(System.lineSeparator());
 		headWriter.flush();
 		headWriter.close();
+//		bfread.close();
 	}
 
 	public static void ReportSaveWriter(String data, String type, String group, int count, int price,
 			String preferentialTreatment) throws IOException {
 //		File writer = new File("SaveFile/save.csv");
-		BufferedWriter buffer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("SaveFile/save.csv", true), "UTF-8"));
+		BufferedWriter bfwrite = new BufferedWriter(
+				new OutputStreamWriter(new FileOutputStream("SaveFile/save.csv", true), "UTF-8"));
 //		BufferedWriter buffer = new BufferedWriter(new FileWriter(writer, true));
-		buffer.write(data + ",  " + type + ",  " + group + ",  " + count + "장,  " + price + "원,  " + preferentialTreatment);
-		buffer.write(System.lineSeparator());
-		buffer.flush();
-		buffer.close();
+		bfwrite.write(
+				data + "," + type + "," + group + "," + count + "" + price + "" + preferentialTreatment);
+		bfwrite.write(System.lineSeparator());
+		bfwrite.flush();
+		bfwrite.close();
 	}
 
 }
