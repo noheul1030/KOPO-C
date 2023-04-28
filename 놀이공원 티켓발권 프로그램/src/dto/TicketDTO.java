@@ -11,7 +11,6 @@ public class TicketDTO {
 
 	// 입력 값 set 전달 메서드
 	public void insertRunFirst() {
-		input.languageChoice();
 		setTicketChoice(input.ticketChoice());
 		setResidentRegistrationNumber(input.residentRegistrationNumber());
 		setBuyTicket(input.buyTicketChoice());
