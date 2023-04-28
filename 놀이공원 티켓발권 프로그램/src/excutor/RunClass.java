@@ -1,9 +1,12 @@
 package excutor;
 
+import java.io.IOException;
 import dto.TicketDTO;
+import inputUtil.InputClass;
 import inputUtil.TicketConstants;
 import output.LanguagePrintClass;
 import output.PrintList;
+import saveData.Report;
 
 public class RunClass {
 
@@ -11,8 +14,9 @@ public class RunClass {
     private PrintList printlist = new PrintList();
 
     // 3. Run 실행 시작 메서드
-    public void startRunFirst() {
+    public void startRunFirst() throws IOException{
         TicketCalculator cal = new TicketCalculator();
+        // DTO
         ticketDTO.insertRunFirst();
 
         int total = cal.age(ticketDTO);
@@ -24,12 +28,14 @@ public class RunClass {
         System.out.printf("\n%s : %s %s\n",LanguagePrintClass.getMsg("OrderSummaryPrint.price")
         		,TicketConstants.STRING_DECIMAL_FORMAT.format(total)
         		,LanguagePrintClass.getMsg("OrderSummaryPrint.won"));
-        System.out.println(LanguagePrintClass.getMsg("Print.thanks"));
+        System.out.println(LanguagePrintClass.getMsg("Print.thanks"));     
     }
 
     // 4. 티켓 발권의 지속 / 종료 여부 확인 메서드
-    public void startRunSecond() {
-        
+    public void startRunSecond() throws IOException{
+    	InputClass.languageChoice();
+    	Report.ReportHeadWriter();
+    	
         while (true) {
         	
             startRunFirst();
